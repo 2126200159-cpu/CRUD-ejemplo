@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.utj.evnd.poo.prueba.controladores.AdministradorController"
+            prefWidth="1150.0"
+            prefHeight="780.0"
+            style="-fx-background-color: #F4F4F4;">
+
+    <!-- ENCABEZADO -->
+    <top>
+        <VBox spacing="5"
+              style="-fx-background-color: #D9E2F3;">
+            <padding>
+                <Insets top="18" right="22"
+                        bottom="18" left="22"/>
+            </padding>
+
+            <Label text="GESTIÓN DE ADMINISTRADORES"
+                   style="-fx-font-size: 21px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #404040;"/>
+
+            <Label text="Registro y administración de usuarios del sistema"
+                   style="-fx-text-fill: #666666;"/>
+        </VBox>
+    </top>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <center>
+      <ScrollPane fitToWidth="true"
+                  fitToHeight="true"
+                  style="-fx-background-color: transparent;">
+        <content>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="18" right="22"
+                        bottom="18" left="22"/>
+            </padding>
+
+            <Label text="Datos del administrador"
+                   style="-fx-font-size: 16px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #404040;"/>
+
+            <!-- FORMULARIO DISTRIBUTIVO -->
+            <GridPane hgap="12" vgap="12">
+
+                <columnConstraints>
+                    <ColumnConstraints minWidth="85"
+                                       halignment="RIGHT"/>
+                    <ColumnConstraints hgrow="ALWAYS"
+                                       percentWidth="28"/>
+                    <ColumnConstraints minWidth="85"
+                                       halignment="RIGHT"/>
+                    <ColumnConstraints hgrow="ALWAYS"
+                                       percentWidth="28"/>
+                    <ColumnConstraints minWidth="85"
+                                       halignment="RIGHT"/>
+                    <ColumnConstraints hgrow="ALWAYS"
+                                       percentWidth="28"/>
+                </columnConstraints>
+
+                <Label text="ID:"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="txtId"
+                           editable="false"
+                           promptText="Autogenerado"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Usuario:"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="2"/>
+
+                <TextField fx:id="txtUsuario"
+                           promptText="Usuario"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="3"/>
+
+                <Label text="Nombre:"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="4"/>
+
+                <TextField fx:id="txtNombre"
+                           promptText="Nombre"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="5"/>
+
+                <Label text="Apellidos:"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="txtApellidos"
+                           promptText="Apellidos"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Correo:"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="2"/>
+
+                <TextField fx:id="txtCorreo"
+                           promptText="Correo electrónico"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="3"/>
+
+                <Label text="Contraseña:"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="4"/>
+
+                <PasswordField fx:id="txtContrasena"
+                               promptText="Contraseña"
+                               GridPane.rowIndex="1"
+                               GridPane.columnIndex="5"/>
+
+                <Label text="Rol:"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="0"/>
+
+                <ComboBox fx:id="cbRol"
+                          promptText="Seleccionar"
+                          maxWidth="Infinity"
+                          GridPane.rowIndex="2"
+                          GridPane.columnIndex="1"/>
+
+                <Label text="Estado:"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="2"/>
+
+                <ComboBox fx:id="cbEstado"
+                          promptText="Seleccionar"
+                          maxWidth="Infinity"
+                          GridPane.rowIndex="2"
+                          GridPane.columnIndex="3"/>
+
+                <Label text="Imagen:"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="4"/>
+
+                <Button fx:id="btnCargarImagen"
+                        text="Cargar imagen"
+                        onAction="#cargarImagen"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #D9E2F3;"
+                        GridPane.rowIndex="2"
+                        GridPane.columnIndex="5"/>
+
+            </GridPane>
+
+            <!-- IMAGEN Y RUTA -->
+            <HBox spacing="15"
+                  alignment="CENTER_LEFT">
+
+                <ImageView fx:id="imgAdministrador"
+                           fitWidth="115"
+                           fitHeight="110"
+                           preserveRatio="true"
+                           smooth="true"/>
+
+                <VBox spacing="8"
+                      alignment="CENTER_LEFT"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="Fotografía del administrador"
+                           style="-fx-font-weight: bold;
+                                  -fx-text-fill: #555555;"/>
+
+                    <TextField fx:id="txtRutaImagen"
+                               editable="false"
+                               promptText="Ruta de la imagen"
+                               maxWidth="Infinity"/>
+
+                    <Label text="Formatos permitidos: PNG, JPG y JPEG"
+                           style="-fx-font-size: 11px;
+                                  -fx-text-fill: #777777;"/>
+                </VBox>
+            </HBox>
+
+            <Separator/>
+
+            <!-- BOTONES CRUD DISTRIBUTIVOS -->
+            <Label text="Operaciones"
+                   style="-fx-font-size: 16px;
+                          -fx-font-weight: bold;"/>
+
+            <HBox spacing="8"
+                  alignment="CENTER"
+                  fillHeight="true">
+
+                <Button fx:id="btnCrear"
+                        text="Crear"
+                        onAction="#crear"
+                        maxWidth="Infinity"
+                        HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #C6E0B4;"/>
+
+                <Button fx:id="btnLimpiar"
+                        text="Limpiar"
+                        onAction="#limpiar"
+                        maxWidth="Infinity"
+                        HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #E7E6E6;"/>
+
+                <Button fx:id="btnBuscar"
+                        text="Buscar"
+                        onAction="#buscar"
+                        maxWidth="Infinity"
+                        HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #BDD7EE;"/>
+
+                <Button fx:id="btnEditar"
+                        text="Editar"
+                        onAction="#editar"
+                        maxWidth="Infinity"
+                        HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #FCE4D6;"/>
+
+                <Button fx:id="btnActualizar"
+                        text="Actualizar"
+                        onAction="#actualizar"
+                        maxWidth="Infinity"
+                        HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #D9E2F3;"/>
+
+                <Button fx:id="btnBorrar"
+                        text="Borrar"
+                        onAction="#borrar"
+                        maxWidth="Infinity"
+                        HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #F4CCCC;"/>
+
+                <Button fx:id="btnCancelar"
+                        text="Cancelar"
+                        onAction="#cancelar"
+                        maxWidth="Infinity"
+                        HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #E7E6E6;"/>
+
+            </HBox>
+
+            <Separator/>
+
+            <!-- BÚSQUEDA -->
+            <Label text="Listado de administradores"
+                   style="-fx-font-size: 16px;
+                          -fx-font-weight: bold;"/>
+
+            <HBox spacing="10"
+                  alignment="CENTER_LEFT">
+
+                <TextField fx:id="txtBuscar"
+                           promptText="Buscar por ID, usuario, nombre o correo"
+                           onAction="#buscar"
+                           HBox.hgrow="ALWAYS"/>
+
+                <Button text="Consultar"
+                        onAction="#buscar"
+                        style="-fx-background-color: #BDD7EE;"/>
+
+            </HBox>
+
+            <!-- TABLA -->
+            <TableView fx:id="tablaAdministradores"
+                       VBox.vgrow="ALWAYS"
+                       prefHeight="250.0">
+
+                <columns>
+                    <TableColumn fx:id="colId"
+                                 text="ID"
+                                 prefWidth="50"/>
+
+                    <TableColumn fx:id="colUsuario"
+                                 text="Usuario"
+                                 prefWidth="100"/>
+
+                    <TableColumn fx:id="colNombre"
+                                 text="Nombre"
+                                 prefWidth="110"/>
+
+                    <TableColumn fx:id="colApellidos"
+                                 text="Apellidos"
+                                 prefWidth="130"/>
+
+                    <TableColumn fx:id="colCorreo"
+                                 text="Correo"
+                                 prefWidth="170"/>
+
+                    <TableColumn fx:id="colRol"
+                                 text="Rol"
+                                 prefWidth="100"/>
+
+                    <TableColumn fx:id="colEstado"
+                                 text="Estado"
+                                 prefWidth="100"/>
+                </columns>
+
+                <placeholder>
+                    <Label text="No hay administradores registrados"/>
+                </placeholder>
+
+            </TableView>
+
+            <!-- MENSAJES -->
+            <Label fx:id="lblMensaje"
+                   text="Listo para gestionar administradores."
+                   style="-fx-text-fill: #666666;"/>
+
+        </VBox>
+        </content>
+      </ScrollPane>
+    </center>
+
+</BorderPane>
